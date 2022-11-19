@@ -3,6 +3,22 @@ const generator = document.getElementById('new-row-generator')
 const transparent = 'opacity(0%)'
 const red = 'invert(47%) sepia(74%) saturate(3260%) hue-rotate(340deg) brightness(102%) contrast(103%)'
 
+//event listener for touch screens
+const arrowButton = document.getElementsByClassName('arrow-color');
+
+for (let i = 0; i < arrowButton.length; i++) {
+	arrowButton[i].addEventListener('click', function (e) {
+		const direction = e.target.id;
+        console.log('direction', direction)
+	});
+}
+
+// Listens for a key to be pressed.
+window.addEventListener('keydown', (e) => {
+	const keyDirection = (e.key);
+    console.log('keyDirection', keyDirection)
+});
+
 //create a random arrow
 const createRow = () => {
     //create row of arrows
