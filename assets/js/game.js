@@ -74,6 +74,11 @@ const animateRow = (row) => {
         ACTIVE = row.getAttribute("data-active")
     }, proximity + 1500)
 
+    //set when the row is active null and therefore can NOT be pressed
+    setTimeout(() => {
+        ACTIVE = null
+    }, proximity + 2000)
+
     //move the arrow up the screen
     const options = [{ transform: "translateY(10000px)" }];
 
