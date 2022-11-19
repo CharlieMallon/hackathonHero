@@ -1,3 +1,8 @@
+:root {
+    --arrow-color: invert(42%) sepia(93%) saturate(1352%) hue-rotate(87deg) brightness(119%) contrast(119%);;
+    --rotation: 0deg;
+}
+
 .score-wrapper{
     height: 20%;
     width: 100%;
@@ -6,19 +11,27 @@
 }
 
 .game-wrapper {
+    display: flex;
+    flex-direction: column;
+    align-content: space-between;
+    justify-content: space-between;
+    margin: auto;
     height: 70%;
     width: 100%;
+    background-color: black;
 }
 
-.board-wrapper{
-    background: white;
+.board-wrapper {
+    background-color: transparent;
     display: flex;
-    align-items: flex-end;
-    margin: auto;
-    height: 100%;
-    width: 100%;
-    justify-content: space-between;
-    background-color: blueviolet;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    border-radius: 10px;
+}
+
+.arrow-color{
+    filter: var(--arrow-color)
 }
 
 .arrow-wrapper{
