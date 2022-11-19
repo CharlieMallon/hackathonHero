@@ -9,7 +9,7 @@ const createRow = () => {
     const newRow = board.cloneNode(true);
     const randomise  = Math.floor(Math.random() * 4);
 
-    //colour random arrow blue and rest transparent
+    //colour random arrow red and rest transparent
     for (let i = 0; i < 4; i++) {
         if (i === randomise) {
             newRow.children[i].style.setProperty("--arrow-color", red);
@@ -18,8 +18,30 @@ const createRow = () => {
         }
     }
 
-    //add arrow to bottom of screen
+    //add arrow to top of screen
     generator.append(newRow);
+    //animate the arrow
+    animateRow(newRow)
+
+    //removes the arrow from the dom
+    setTimeout(() => {
+        newRow.remove();
+    }, 5000)
+
+}
+
+const animateRow = (row) => {
+
+    //move the arrow up the screen
+    const options = [{ transform: "translateY(10000px)" }];
+
+    //move it for this long 
+    const keyframes = {
+        duration: 50000,
+        iterations: Infinity
+    }
+
+    row.animate(options, keyframes)
 
 }
 

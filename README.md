@@ -20,7 +20,7 @@
 
 ## Credits
 
-* [Be sure to credit any assets that are not yours](https://www.example.com)
+* [CSS filter generator to convert from black to target hex color](https://codepen.io/sosuke/pen/Pjoqqp)
 * [Member 1 Linkedin](https://www.linkedin.com)
 * [Member 2 Linkedin](https://www.linkedin.com)
 * [etc. etc.](https://www.example.com)
