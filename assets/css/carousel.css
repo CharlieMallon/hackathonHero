@@ -4,19 +4,24 @@ body {
 
 .container {
   margin: 0 auto;
-  width: 250px;
+  display: flex;
+  width: 100%;
   height: 200px;
   position: relative;
   perspective: 1000px;
+  bottom: -21%;
 }
 
 .carousel {
   height: 100%;
   width: 100%;
+  margin-left: 1%;
   position: absolute;
   transform: translateZ(-250px);
   transform-style: preserve-3d;
   transition: transform 1s;
+  display: flex;
+  justify-content: center;
 }
 
 .card {
@@ -28,8 +33,8 @@ body {
   font-size: 5em;
   text-align: center;
   color: white;
-  opacity: 0.95;
   border-radius: 50%;
+  border: solid 4px black;
 }
 
 .card:nth-child(6n+1) {
@@ -90,7 +95,7 @@ body {
 .prev {
   color: #444;
   position: absolute;
-  top: 100px;
+  bottom: 134px;
   padding: 1em 2em;
   cursor: pointer;
   background: #ccc;
@@ -105,4 +110,50 @@ body {
 }
 .prev {
   left: 5em;
+}
+
+@media only screen and (min-width: 1080px) {
+.card {
+  width: 350px;
+  height: 350px;
+}
+.card:nth-child(1) {
+  transform: rotateY(0deg) translateZ(350px);
+  background-color: blue;
+}
+
+.card:nth-child(2) {
+  transform: rotateY(60deg) translateZ(350px);
+  background-color: red;
+}
+
+.card:nth-child(3) {
+  transform: rotateY(120deg) translateZ(350px);
+  background-color: pink;
+}
+
+.card:nth-child(4) {
+  transform: rotateY(180deg) translateZ(350px);
+  background-color: green;
+}
+
+.card:nth-child(5) {
+  transform: rotateY(240deg) translateZ(350px);
+  background-color: yellow;
+}
+
+.card:nth-child(6) {
+  transform: rotateY(300deg) translateZ(350px);
+  background-color: purple;
+}
+}
+
+@media only screen and (max-width: 380px) {
+ .container {
+  bottom: -8%;
+ }
+
+ .prev, .next {
+  /*bottom: 100px;*/
+ }
 }
