@@ -2,8 +2,7 @@ const board = document.getElementById('board');
 const generator = document.getElementById('new-row-generator')
 const transparent = 'opacity(0%)'
 const red = 'invert(47%) sepia(74%) saturate(3260%) hue-rotate(340deg) brightness(102%) contrast(103%)'
-
-let ACTIVE = null
+ACTIVE = null
 
 //event listener for touch screens
 const arrowButton = document.getElementsByClassName('arrow');
@@ -50,47 +49,46 @@ const createRow = () => {
 
     //add arrow to top of screen
     generator.append(newRow);
-    //animate the arrow
+    //animate the row
     animateRow(newRow)
-
-    // removes the arrow from the dom
-    setTimeout(() => {
-        newRow.remove();
-    }, 2200)
-
 }
+
+let speed = 5000
+let gameHeight = 850
 
 const animateRow = (row) => {
 
+    // code stolen from http://www.javascriptkit.com/javatutors/requestanimationframe.shtml
+    let arrowRow = document.getElementById(row.id)
+    let starttime
 
-    const rowPosition = row.getBoundingClientRect().top; // top of new row
-    const boardPosition = board.getBoundingClientRect().top; // top of board row
-
-    const proximity = boardPosition - rowPosition; //how close are they together
-
-
-    //set when the row is active and therefore can be pressed
-    setTimeout(() => {
-        ACTIVE = row.getAttribute("data-active")
-    }, proximity + 1500)
-
-    //set when the row is active null and therefore can NOT be pressed
-    setTimeout(() => {
-        ACTIVE = null
-    }, proximity + 2000)
-
-    //move the arrow up the screen
-    const options = [{ transform: "translateY(10000px)" }];
-
-    //move it for this long 
-    const keyframes = {
-        duration: 50000,
-        iterations: Infinity
+    function moveit(timestamp, arrowRow, dist, duration){
+        //if browser doesn't support requestAnimationFrame, generate our own timestamp using Date:
+        timestamp = timestamp || new Date().getTime()
+        let runtime = timestamp - starttime
+        let progress = runtime / duration
+        progress = Math.min(progress, 1)
+        arrowRow.style.paddingTop = (dist * progress).toFixed(2) + 'px'
+        if (runtime < duration){ // if duration not met yet
+            requestAnimationFrame(function(timestamp){ // call requestAnimationFrame again with parameters
+                moveit(timestamp, arrowRow, dist, duration)
+            })
+        }
+        if (parseFloat(row.style.paddingTop).toFixed(2) > gameHeight-100 && parseFloat(row.style.paddingTop).toFixed(2) < gameHeight-50){
+            ACTIVE = row.getAttribute("data-active")
+            console.log(ACTIVE, row.id)
+        } else {
+            ACTIVE = null
+        }
     }
 
-    row.animate(options, keyframes)
-
+    window.requestAnimationFrame(function(timestamp){
+        starttime = timestamp || new Date().getTime() //if browser doesn't support requestAnimationFrame, generate our own timestamp using Date
+        moveit(timestamp, arrowRow, gameHeight, speed) // 400px over 1 second
+    })
+    //end of stolen code
 }
+
 
 const handleInput = (direction) => {
 
