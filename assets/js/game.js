@@ -3,20 +3,22 @@ const generator = document.getElementById('new-row-generator')
 const transparent = 'opacity(0%)'
 const red = 'invert(47%) sepia(74%) saturate(3260%) hue-rotate(340deg) brightness(102%) contrast(103%)'
 
+let ACTIVE = null
+
 //event listener for touch screens
 const arrowButton = document.getElementsByClassName('arrow-color');
 
 for (let i = 0; i < arrowButton.length; i++) {
 	arrowButton[i].addEventListener('click', function (e) {
 		const direction = e.target.id;
-        console.log('direction', direction)
+        handleInput(direction)
 	});
 }
 
 // Listens for a key to be pressed.
 window.addEventListener('keydown', (e) => {
 	const keyDirection = (e.key);
-    console.log('keyDirection', keyDirection)
+    handleInput(keyDirection)
 });
 
 //create a random arrow
@@ -24,6 +26,10 @@ const createRow = () => {
     //create row of arrows
     const newRow = board.cloneNode(true);
     const randomise  = Math.floor(Math.random() * 4);
+
+    //sets a which arrow is active on the row
+    const DIRECTIONS = ["ArrowLeft", "ArrowUp", "ArrowDown", "ArrowRight"]
+    newRow.setAttribute("data-active", DIRECTIONS[randomise]);
 
     //colour random arrow red and rest transparent
     for (let i = 0; i < 4; i++) {
@@ -48,6 +54,20 @@ const createRow = () => {
 
 const animateRow = (row) => {
 
+
+    const rowPosition = row.getBoundingClientRect().top; // top of new row
+    const boardPosition = board.getBoundingClientRect().top; // top of board row
+
+    const proximity = boardPosition - rowPosition; //how close are they together
+    console.log('proximity', proximity)
+
+
+    //set when the row is active and therefore can be pressed
+    setTimeout(() => {
+        ACTIVE = row.getAttribute("data-active")
+        console.log('ACTIVE', ACTIVE)
+    }, proximity + 1500)
+
     //move the arrow up the screen
     const options = [{ transform: "translateY(10000px)" }];
 
@@ -59,6 +79,20 @@ const animateRow = (row) => {
 
     row.animate(options, keyframes)
 
+}
+
+const handleInput = (direction) => {
+
+    const activeArrow = ACTIVE;
+    const pressedKey = direction;
+
+    console.log(activeArrow, pressedKey)
+
+    if (pressedKey === activeArrow) {
+        console.log("yay");
+    } else {
+        console.log("miss");
+    }
 }
 
 const startGame = () => {
