@@ -6,7 +6,7 @@ const red = 'invert(47%) sepia(74%) saturate(3260%) hue-rotate(340deg) brightnes
 let ACTIVE = null
 
 //event listener for touch screens
-const arrowButton = document.getElementsByClassName('arrow-color');
+const arrowButton = document.getElementsByClassName('arrow');
 
 for (let i = 0; i < arrowButton.length; i++) {
 	arrowButton[i].addEventListener('click', function (e) {
@@ -21,11 +21,19 @@ window.addEventListener('keydown', (e) => {
     handleInput(keyDirection)
 });
 
+//count Rows created
+let callCount = 0
+
 //create a random arrow
 const createRow = () => {
     //create row of arrows
     const newRow = board.cloneNode(true);
     const randomise  = Math.floor(Math.random() * 4);
+    
+    //incrementRow
+    newRow.setAttribute('id', 'row'+callCount);
+    newRow.setAttribute('class', 'moving-row');
+    callCount+= 1;
 
     //sets a which arrow is active on the row
     const DIRECTIONS = ["ArrowLeft", "ArrowUp", "ArrowDown", "ArrowRight"]
@@ -45,7 +53,7 @@ const createRow = () => {
     //animate the arrow
     animateRow(newRow)
 
-    //removes the arrow from the dom
+    // removes the arrow from the dom
     setTimeout(() => {
         newRow.remove();
     }, 2200)
@@ -59,13 +67,11 @@ const animateRow = (row) => {
     const boardPosition = board.getBoundingClientRect().top; // top of board row
 
     const proximity = boardPosition - rowPosition; //how close are they together
-    console.log('proximity', proximity)
 
 
     //set when the row is active and therefore can be pressed
     setTimeout(() => {
         ACTIVE = row.getAttribute("data-active")
-        console.log('ACTIVE', ACTIVE)
     }, proximity + 1500)
 
     //move the arrow up the screen

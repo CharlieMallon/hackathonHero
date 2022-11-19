@@ -21,13 +21,12 @@
     background-color: black;
 }
 
-.board-wrapper {
+.new-row-generator, .board-wrapper {
     background-color: transparent;
     display: flex;
     flex-direction: row;
     justify-content: center;
     align-items: center;
-    border-radius: 10px;
 }
 
 .arrow-color{
@@ -53,3 +52,7 @@
     transform: rotate(180deg);
 }
 
+.moving-row{
+    position: absolute;
+    display: flex;
+}
