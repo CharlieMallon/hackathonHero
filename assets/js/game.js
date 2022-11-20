@@ -47,6 +47,10 @@ const createRow = () => {
     const DIRECTIONS = ["ArrowLeft", "ArrowUp", "ArrowDown", "ArrowRight"]
     newRow.setAttribute("data-active", DIRECTIONS[randomise]);
 
+    //sets its start time
+    //Each row needs to know its progress down the dom, so it can update its top px.  this means it needs to know when it was created.
+    newRow.setAttribute("data-starttime", new Date().getTime());
+
     //colour random arrow red and rest transparent
     for (let i = 0; i < 4; i++) {
         if (i === randomise) {
@@ -58,51 +62,47 @@ const createRow = () => {
 
     //add arrow to top of screen
     generator.append(newRow);
-    //animate the row
-    animateRow(newRow)
 }
 
 
-let speed = 5000;
+let duration = 5000; // higher the number the slower the arrow falls
 
 let gameHeight = document.getElementsByClassName('game-wrapper')[0].offsetHeight
 let buttonHeight = document.getElementById('board').offsetHeight
 
-console.log('gameHeight', gameHeight)
+const animateRows = (allRows) => {
 
-const animateRow = (row) => {
-
-    // code stolen from http://www.javascriptkit.com/javatutors/requestanimationframe.shtml
-    let arrowRow = document.getElementById(row.id)
-    let starttime
-
-    function moveit(timestamp, arrowRow, dist, duration){
+    // code butchered from http://www.javascriptkit.com/javatutors/requestanimationframe.shtml
+    function moveit(timestamp, allRows, dist, duration){
         //if browser doesn't support requestAnimationFrame, generate our own timestamp using Date:
-        timestamp = timestamp || new Date().getTime()
-        let runtime = timestamp - starttime
-        let progress = runtime / duration
-        progress = Math.min(progress, 1)
-        arrowRow.style.top = (dist * progress).toFixed(2) + 'px'
-        if (runtime < duration){ // if duration not met yet
-            requestAnimationFrame(function(timestamp){ // call requestAnimationFrame again with parameters
-                moveit(timestamp, arrowRow, dist, duration)
+        timestamp = new Date().getTime()
+        for (row of allRows) {
+            let starttime = Number(row.dataset.starttime)
+            let runtime = timestamp - starttime // how long since we last did this
+            let progress = runtime / duration // duration = how long it should take, progress = how far down the dom it should be.
+            progress = Math.min(progress, 1) // keeps animation smooth
+            row.style.top = (dist * progress).toFixed(2) + 'px'
+        };
+        
+        if (allRows){ // if song is running continue.
+            requestAnimationFrame(function(timestamp){ // call requestAnimationFrame again
+                moveit(timestamp, allRows, dist, duration)
             })
         }
-        if (parseFloat(row.style.top).toFixed(2) > gameHeight-buttonHeight){
-            ACTIVE = row.getAttribute("data-active")
-            ACTIVEROW = row
-            setTimeout(() => {
-                ACTIVE = null;
-            }, 1000)
-        }
-        if (parseFloat(row.style.top).toFixed(2) == gameHeight){
-            arrowRow.remove()
-        }
+        // if (parseFloat(row.style.top).toFixed(2) > gameHeight-buttonHeight){
+        //     ACTIVE = row.getAttribute("data-active")
+        //     ACTIVEROW = row
+        //     setTimeout(() => {
+        //         ACTIVE = null;
+        //     }, 500)
+        // }
+        // if (parseFloat(row.style.top).toFixed(2) == gameHeight){
+        //     arrowRow.remove()
+        // }
     }
 
     window.requestAnimationFrame(function(timestamp){
-        starttime = timestamp || new Date().getTime() //if browser doesn't support requestAnimationFrame, generate our own timestamp using Date
-        moveit(timestamp, arrowRow, gameHeight, speed)
+        moveit(timestamp, allRows, gameHeight, duration)
     })
     //end of stolen code
 }
@@ -131,6 +131,12 @@ const startGame = () => {
     setInterval(() => {
         createRow();
     }, 1000)
+    
+    //animate all rows
+    let allRows = document.getElementsByClassName('moving-Row')
+    console.log(allRows)
+    
+    animateRows(allRows)
 }
 
 startGame();
