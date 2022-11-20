@@ -2,6 +2,8 @@ var carousel = document.querySelector('.carousel');
 var cellCount = 6;
 var selectedIndex = 0;
 var songIndex = 0
+let slider = document.getElementById('volume')
+var volumeSettings = slider.value / 100
 
 
 function rotateCarousel() {
@@ -51,14 +53,13 @@ const playTile = () => {
     const track = SONGS[songIndex];
     let audio = document.getElementById('carousel-audio-player')
     audio.setAttribute("src", track.link)
-    audio.volume = 0.2;
+    audio.volume = volumeSettings;
     audio.currentTime=10;
     audio.play();
     setInterval(function(){
       
       if(audio.currentTime>25){
-        
-        audio.pause();
+        audio.currentTime=10
       }
     },1000);
   }
@@ -69,7 +70,6 @@ const increaseSongIndex = () => {
     if(songIndex === SONGS.length){
     songIndex = 0
     }
-    console.log(songIndex)
 }
 
 // Decrease song index
@@ -78,7 +78,23 @@ const decreaseSongIndex = () => {
     songIndex = SONGS.length
   }
   songIndex--
-  console.log(songIndex)
+}
+
+// volume slider 
+ 
+slider.oninput = function () {
+  let audio = document.getElementById('carousel-audio-player')
+  volumeSettings = this.value / 100;
+  audio.volume = volumeSettings
+  console.log(volumeSettings)
+
+};
+
+// Mute Volume 
+const muteVolume = () => {
+  let audio = document.getElementById('carousel-audio-player')
+  audio.volume = 0
+  volumeSettings = 0 
 }
 
 // Stop song 
@@ -87,8 +103,9 @@ const stopSong = () => {
 }
 
 
+
+
 populateCarousel()
 playTile()
 
 
-// Play current song in slider 
