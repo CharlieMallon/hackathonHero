@@ -2,8 +2,16 @@ body {
   padding: 70px 0;
 }
 
+.header {
+  text-align: center;
+}
+
 .card p {
   font-size: 18;
+}
+
+#carousel-outer-container{
+  height: 80%;
 }
 
 .container {
@@ -93,6 +101,21 @@ body {
   left: 5em;
 }
 
+#carousel-volume-settings {
+  margin-top: 50px;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+}
+
+#volume {
+  width: 100px;
+  bottom: 10px;
+  margin: 0 auto;
+}
+
+
+
 
 @media only screen and (min-width: 1080px) {
 .card {
@@ -126,6 +149,7 @@ body {
   transform: rotateY(300deg) translateZ(350px);
 }
 }
+
 
 @media only screen and (max-width: 380px) {
  .container {
