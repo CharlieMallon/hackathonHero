@@ -1,3 +1,18 @@
+/* styling css */
+
+.game-title {
+    display: flex;
+    justify-content: center;
+
+}
+
+.current-song h3 {
+    display: flex;
+    justify-content: center;
+}
+
+/* game css */
+
 :root {
     --arrow-color: invert(42%) sepia(93%) saturate(1352%) hue-rotate(87deg) brightness(119%) contrast(119%);;
     --rotation: 0deg;
@@ -8,6 +23,7 @@
     width: 100%;
     background-color: aqua;
     display: flex;
+    flex-direction: column;
 }
 
 .game-wrapper {
