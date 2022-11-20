@@ -3,7 +3,7 @@ const SONGS =[
         "name" : "21 Guns",
         "artist" : "Green Day",
         "link" : "/assets/audio/level1.mp3",
-        "image" : "/assets/images/21guns.jpeg",
+        "image" : "https://t2.genius.com/unsafe/610x488/https%3A%2F%2Fimages.genius.com%2F6ee96b9a59cef27d8bac481c5c4ef935.1000x800x1.jpg",
         "level": "easy",
         "bpm" : 80, 
         "Genre" : "Rock",

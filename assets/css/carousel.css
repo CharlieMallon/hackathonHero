@@ -37,29 +37,6 @@ body {
   border: solid 4px black;
 }
 
-.card:nth-child(6n+1) {
-  background-color: blue;
-}
-
-.card:nth-child(6n+2) {
-  background-color: red;
-}
-
-.card:nth-child(6n+3) {
-  background-color: pink;
-}
-
-.card:nth-child(6n+4) {
-  background-color: green;
-}
-
-.card:nth-child(6n+5) {
-  background-color: yellow;
-}
-
-.card:nth-child(6n+6) {
-  background-color: purple;
-}
 
 .card:nth-child(1) {
   transform: rotateY(0deg) translateZ(250px);
