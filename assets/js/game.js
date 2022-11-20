@@ -1,11 +1,16 @@
 const board = document.getElementById('board');
 const generator = document.getElementById('new-row-generator')
 const transparent = 'opacity(0%)'
-const red = 'invert(47%) sepia(74%) saturate(3260%) hue-rotate(340deg) brightness(102%) contrast(103%)'
+const red = 'invert(24%) sepia(97%) saturate(7063%) hue-rotate(349deg) brightness(94%) contrast(102%)'
+const pink = 'invert(55%) sepia(75%) saturate(6672%) hue-rotate(278deg) brightness(96%) contrast(111%)'
+const blue = 'invert(77%) sepia(44%) saturate(4914%) hue-rotate(126deg) brightness(111%) contrast(96%)'
+const yellow = 'invert(94%) sepia(27%) saturate(5660%) hue-rotate(330deg) brightness(111%) contrast(90%)'
+const colour = [red, pink, blue, yellow]
 let ACTIVE = null
 let ACTIVEROW = ''
 let score = 0
 
+// ---- Get the arrow that the user pressed
 //event listener for touch screens
 const arrowButton = document.getElementsByClassName('arrow');
 
@@ -22,6 +27,7 @@ window.addEventListener('keydown', (e) => {
     handleInput(keyDirection)
 });
 
+// ----- Create the Arrows
 //count Rows created
 let callCount = 0
 
@@ -30,6 +36,7 @@ const createRow = () => {
     //create row of arrows
     const newRow = board.cloneNode(true);
     const randomise  = Math.floor(Math.random() * 4);
+    const randomColor = colour[Math.floor(Math.random() * colour.length)];
     
     //incrementRow
     newRow.setAttribute('id', 'row'+callCount);
@@ -43,7 +50,7 @@ const createRow = () => {
     //colour random arrow red and rest transparent
     for (let i = 0; i < 4; i++) {
         if (i === randomise) {
-            newRow.children[i].style.setProperty("--arrow-color", red);
+            newRow.children[i].style.setProperty("--arrow-color", randomColor);
         } else {
             newRow.children[i].style.setProperty("--arrow-color", transparent);
         }
@@ -54,6 +61,7 @@ const createRow = () => {
     //animate the row
     animateRow(newRow)
 }
+
 
 let speed = 5000;
 
