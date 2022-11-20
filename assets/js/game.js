@@ -74,7 +74,7 @@ const animateRow = (row) => {
                 moveit(timestamp, arrowRow, dist, duration)
             })
         }
-        if (parseFloat(row.style.paddingTop).toFixed(2) > gameHeight-100 && parseFloat(row.style.paddingTop).toFixed(2) < gameHeight-50){
+        if (parseFloat(row.style.paddingTop).toFixed(2) > gameHeight-100){
             ACTIVE = row.getAttribute("data-active")
             console.log(ACTIVE, row.id)
             setTimeout(() => {
@@ -108,6 +108,7 @@ const handleInput = (direction) => {
 
 const startGame = () => {
 
+    createRow();
     // set the interval of when to show the arrows
     setInterval(() => {
         createRow();
