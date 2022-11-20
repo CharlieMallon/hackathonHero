@@ -81,7 +81,20 @@ const animateRows = (allRows) => {
             let runtime = timestamp - starttime // how long since we last did this
             let progress = runtime / duration // duration = how long it should take, progress = how far down the dom it should be.
             progress = Math.min(progress, 1) // keeps animation smooth
-            row.style.top = (dist * progress).toFixed(2) + 'px'
+            row.style.top = (dist * progress).toFixed(2) + 'px' // move the row down the page
+            //if in hit zone give active class
+            if (parseFloat(row.style.top).toFixed(2) > gameHeight-buttonHeight) {
+                ACTIVE = row.getAttribute("data-active")
+                ACTIVEROW = row
+            } 
+            // if (parseFloat(row.style.top).toFixed(2) < gameHeight-(buttonHeight+20)) {
+            //     ACTIVE = null
+            //     ACTIVEROW = ''
+            // }
+            //Remove the row if off game page
+            if (parseFloat(row.style.top).toFixed(2) == gameHeight){
+                row.remove()
+            }
         };
         
         if (allRows){ // if song is running continue.
@@ -95,9 +108,6 @@ const animateRows = (allRows) => {
         //     setTimeout(() => {
         //         ACTIVE = null;
         //     }, 500)
-        // }
-        // if (parseFloat(row.style.top).toFixed(2) == gameHeight){
-        //     arrowRow.remove()
         // }
     }
 
