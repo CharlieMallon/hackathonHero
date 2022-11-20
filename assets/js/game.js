@@ -6,8 +6,6 @@ const pink = 'invert(55%) sepia(75%) saturate(6672%) hue-rotate(278deg) brightne
 const blue = 'invert(77%) sepia(44%) saturate(4914%) hue-rotate(126deg) brightness(111%) contrast(96%)'
 const yellow = 'invert(94%) sepia(27%) saturate(5660%) hue-rotate(330deg) brightness(111%) contrast(90%)'
 const colour = [red, pink, blue, yellow]
-let ACTIVE = null
-let ACTIVEROW = ''
 let score = 0
 
 // ---- Get the arrow that the user pressed
@@ -82,15 +80,10 @@ const animateRows = (allRows) => {
             let progress = runtime / duration // duration = how long it should take, progress = how far down the dom it should be.
             progress = Math.min(progress, 1) // keeps animation smooth
             row.style.top = (dist * progress).toFixed(2) + 'px' // move the row down the page
-            //if in hit zone give active class
+            //if in hit zone give click attribute
             if (parseFloat(row.style.top).toFixed(2) > gameHeight-buttonHeight) {
-                ACTIVE = row.getAttribute("data-active")
-                ACTIVEROW = row
+                row.setAttribute('data-click', true)
             } 
-            // if (parseFloat(row.style.top).toFixed(2) < gameHeight-(buttonHeight+20)) {
-            //     ACTIVE = null
-            //     ACTIVEROW = ''
-            // }
             //Remove the row if off game page
             if (parseFloat(row.style.top).toFixed(2) == gameHeight){
                 row.remove()
@@ -120,15 +113,19 @@ const animateRows = (allRows) => {
 
 const handleInput = (direction) => {
 
-    const activeArrow = ACTIVE;
-    const pressedKey = direction;
-
-    if (pressedKey === activeArrow) {
-        console.log('yay')
-        ACTIVEROW.remove();
-        score = score + 10
-    } else {
-        console.log("miss")
+    const activeRows = document.querySelectorAll('[data-click=true]');
+    if (activeRows.length){
+        const activeArrow = activeRows[0].dataset.active
+        const pressedKey = direction; // direction pressed/clicked
+    
+        console.log(activeArrow)
+    
+        if (pressedKey === activeArrow) {
+            console.log('hit')
+            score = score + 10
+        } else {
+            console.log("miss")
+        }
     }
 
     document.getElementById('score').innerHTML = score;
