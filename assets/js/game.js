@@ -56,7 +56,11 @@ const createRow = () => {
 }
 
 let speed = 5000;
-let gameHeight = 850 + 100;
+
+let gameHeight = document.getElementsByClassName('game-wrapper')[0].offsetHeight
+let buttonHeight = document.getElementById('board').offsetHeight
+
+console.log('gameHeight', gameHeight)
 
 const animateRow = (row) => {
 
@@ -70,20 +74,20 @@ const animateRow = (row) => {
         let runtime = timestamp - starttime
         let progress = runtime / duration
         progress = Math.min(progress, 1)
-        arrowRow.style.paddingTop = (dist * progress).toFixed(2) + 'px'
+        arrowRow.style.top = (dist * progress).toFixed(2) + 'px'
         if (runtime < duration){ // if duration not met yet
             requestAnimationFrame(function(timestamp){ // call requestAnimationFrame again with parameters
                 moveit(timestamp, arrowRow, dist, duration)
             })
         }
-        if (parseFloat(row.style.paddingTop).toFixed(2) > gameHeight-130){
+        if (parseFloat(row.style.top).toFixed(2) > gameHeight-buttonHeight){
             ACTIVE = row.getAttribute("data-active")
             ACTIVEROW = row
             setTimeout(() => {
                 ACTIVE = null;
             }, 1000)
         }
-        if (parseFloat(row.style.paddingTop).toFixed(2) == gameHeight){
+        if (parseFloat(row.style.top).toFixed(2) == gameHeight){
             arrowRow.remove()
         }
     }
