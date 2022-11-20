@@ -77,9 +77,11 @@ const animateRow = (row) => {
         if (parseFloat(row.style.paddingTop).toFixed(2) > gameHeight-100 && parseFloat(row.style.paddingTop).toFixed(2) < gameHeight-50){
             ACTIVE = row.getAttribute("data-active")
             console.log(ACTIVE, row.id)
-        } else {
-            ACTIVE = null
-        }
+            setTimeout(() => {
+                ACTIVE = null;
+                console.log(ACTIVE + " off")
+            }, 1000)
+        } 
     }
 
     window.requestAnimationFrame(function(timestamp){
