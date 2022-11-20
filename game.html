@@ -4,7 +4,7 @@
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <!-- My style Sheet -->
-        <link rel="stylesheet" href="assets\game.css">
+        <link rel="stylesheet" href="assets/css/game.css">
         <title>Dance Dance</title>
     </head>
 <body>
@@ -13,7 +13,39 @@
     arrow animate from the top. When the arrow key is pressed and 
     its the correct arrow and the arrow is in the tap zone then
     they get a point. After 7 missed they lose game or lose points? -->
-    <h1>game!!</h1>
+    <h2 class="game-title">Rhythm Dance Game</h2>
+    <div class="score-wrapper">
+        <div class="current-song">
+            <h3>Current Song</h3>
+            <p>artist / song</p>
+            <p>difficulty</p>
+        </div>
+        <div class="score">
+            <p>Score: </p>
+            <p id="score"></p>
+            <p>High Score: cookie?</p>
+        </div>
+        <div class="volume">volume slider</div>
+    </div>
+    <div class="game-wrapper">
+        <div class="new-row-generator" id="new-row-generator">
+            <!-- Rows with active arrow appear here -->
+        </div>
+        <div class="board-wrapper" id="board">
+            <div class="arrow-wrapper left-arrow" id="left-arrow">
+                <img src="assets/images/arrow.svg" alt="arrow" class="arrow-color arrow" id="ArrowLeft">
+            </div>
+            <div class="arrow-wrapper up-arrow" id="up-arrow">
+                <img src="assets/images/arrow.svg" alt="arrow" class="arrow-color arrow" id="ArrowUp">
+            </div>
+            <div class="arrow-wrapper down-arrow" id="down-arrow">
+                <img src="assets/images/arrow.svg" alt="arrow" class="arrow-color arrow" id="ArrowDown">
+            </div>
+            <div class="arrow-wrapper right-arrow" id="right-arrow">
+                <img src="assets/images/arrow.svg" alt="arrow" class="arrow-color arrow" id="ArrowRight">
+            </div>
+        </div>
+    </div>
     <script src="assets/js/game.js"></script>
 </body>
 </html>
