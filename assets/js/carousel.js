@@ -52,7 +52,6 @@ const playTile = () => {
     const track = SONGS[songIndex];
     let audio = document.getElementById('carousel-audio-player')
     audio.setAttribute("src", track.link)
-    audio.volume = volumeSettings;
     audio.currentTime=10;
     audio.play();
     setInterval(function(){
@@ -89,7 +88,9 @@ let muteButton = document.getElementById('mute-button')
 slider.oninput = function () {
   let audio = document.getElementById('carousel-audio-player')
   volumeSettings = this.value / 100;
-  audio.volume = volumeSettings
+
+  audio.volume = volumeSettings 
+  console.log(volumeSettings)
   changeMuteBtn()
   console.log(volumeSettings)
   }
@@ -105,7 +106,7 @@ const muteVolume = () => {
     return
   }
   audio.volume = 0
-  volumeSettings = 0 
+  volumeSettings = 0 / 100
   changeMuteBtn()
 }
 muteButton.addEventListener('click', muteVolume)
