@@ -2,6 +2,10 @@ body {
   padding: 70px 0;
 }
 
+.card p {
+  font-size: 18;
+}
+
 .container {
   margin: 0 auto;
   display: flex;
@@ -88,6 +92,7 @@ body {
 .prev {
   left: 5em;
 }
+
 
 @media only screen and (min-width: 1080px) {
 .card {
