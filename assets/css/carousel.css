@@ -98,7 +98,10 @@ body {
 .card {
   width: 350px;
   height: 350px;
+  background-size: cover;
+  background-position: center;
 }
+
 .card:nth-child(1) {
   transform: rotateY(0deg) translateZ(350px);
 }
