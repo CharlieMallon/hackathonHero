@@ -70,14 +70,16 @@ let buttonHeight = document.getElementById('board').offsetHeight
 
 const animateRows = (allRows) => {
 
-    // code butchered from http://www.javascriptkit.com/javatutors/requestanimationframe.shtml
+    // code inspired by from http://www.javascriptkit.com/javatutors/requestanimationframe.shtml
     function moveit(timestamp, allRows, dist, duration){
         //if browser doesn't support requestAnimationFrame, generate our own timestamp using Date:
         timestamp = new Date().getTime()
         for (row of allRows) {
             let starttime = Number(row.dataset.starttime)
             let runtime = timestamp - starttime // how long since we last did this
-            let progress = runtime / duration // duration = how long it should take, progress = how far down the dom it should be.
+            // duration = how long it should take
+            //progress = how far down the dom it should be.
+            let progress = runtime / duration 
             progress = Math.min(progress, 1) // keeps animation smooth
             row.style.top = (dist * progress).toFixed(2) + 'px' // move the row down the page
             //if in hit zone give click attribute
@@ -89,25 +91,16 @@ const animateRows = (allRows) => {
                 row.remove()
             }
         };
-        
         if (allRows){ // if song is running continue.
             requestAnimationFrame(function(timestamp){ // call requestAnimationFrame again
                 moveit(timestamp, allRows, dist, duration)
             })
         }
-        // if (parseFloat(row.style.top).toFixed(2) > gameHeight-buttonHeight){
-        //     ACTIVE = row.getAttribute("data-active")
-        //     ACTIVEROW = row
-        //     setTimeout(() => {
-        //         ACTIVE = null;
-        //     }, 500)
-        // }
     }
 
     window.requestAnimationFrame(function(timestamp){
         moveit(timestamp, allRows, gameHeight, duration)
     })
-    //end of stolen code
 }
 
 
@@ -117,8 +110,6 @@ const handleInput = (direction) => {
     if (activeRows.length){
         const activeArrow = activeRows[0].dataset.active
         const pressedKey = direction; // direction pressed/clicked
-    
-        console.log(activeArrow)
     
         if (pressedKey === activeArrow) {
             console.log('hit')
@@ -134,14 +125,13 @@ const handleInput = (direction) => {
 const startGame = () => {
 
     createRow();
-    // set the interval of when to show the arrows
+    // set the interval of when to add the arrows
     setInterval(() => {
         createRow();
     }, 1000)
     
     //animate all rows
     let allRows = document.getElementsByClassName('moving-Row')
-    console.log(allRows)
     
     animateRows(allRows)
 }
