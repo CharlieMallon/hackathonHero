@@ -53,8 +53,8 @@ const createRow = () => {
     animateRow(newRow)
 }
 
-let speed = 5000
-let gameHeight = 850
+let speed = 5000;
+let gameHeight = 850 + 100;
 
 const animateRow = (row) => {
 
@@ -74,19 +74,20 @@ const animateRow = (row) => {
                 moveit(timestamp, arrowRow, dist, duration)
             })
         }
-        if (parseFloat(row.style.paddingTop).toFixed(2) > gameHeight-100){
+        if (parseFloat(row.style.paddingTop).toFixed(2) > gameHeight-130){
             ACTIVE = row.getAttribute("data-active")
-            console.log(ACTIVE, row.id)
             setTimeout(() => {
                 ACTIVE = null;
-                console.log(ACTIVE + " off")
-            }, 1000)
-        } 
+            }, 500)
+        }
+        if (parseFloat(row.style.paddingTop).toFixed(2) == gameHeight){
+            arrowRow.remove()
+        }
     }
 
     window.requestAnimationFrame(function(timestamp){
         starttime = timestamp || new Date().getTime() //if browser doesn't support requestAnimationFrame, generate our own timestamp using Date
-        moveit(timestamp, arrowRow, gameHeight, speed) // 400px over 1 second
+        moveit(timestamp, arrowRow, gameHeight, speed)
     })
     //end of stolen code
 }
@@ -112,7 +113,7 @@ const startGame = () => {
     // set the interval of when to show the arrows
     setInterval(() => {
         createRow();
-    }, 3000)
+    }, 1000)
 }
 
 startGame();
