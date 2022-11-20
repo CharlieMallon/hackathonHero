@@ -1,18 +1,89 @@
 <html lang="en">
-    <head>
-        <meta charset="UTF-8">
-        <meta http-equiv="X-UA-Compatible" content="IE=edge">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <!-- My style Sheet -->
-        <link rel="stylesheet" href="assets\carousel.css">
-        <title>Dance Dance</title>
-    </head>
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- My style Sheet -->
+    <link rel="stylesheet" href="assets/css/carousel.css">
+    <title>Dance Dance</title>
+</head>
+
 <body>
     <!-- This page allows the selection of a song,
         each song has a difficulty which is determined
         by the BPM of the song.  Carousel shows the
         single cover of the song, artist and difficulty. -->
-    <h1>Carousel</h1>
+    <div class="header">
+        <h1>DANCE DANCE</h1>
+    </div>
+
+    <div class="header">
+        <h2>Select Your Song</h2>
+    </div>
+
+    <!-- Carousel to pick Song Song\s -->
+    <div id="carousel-outer-container">
+        <div class="container">
+            <div class="carousel">
+            </div>
+        </div>
+        <button class="next">Next</button>
+        <button class="prev">Prev</button>
+    </div>
+    <!-- ./Carousel to pick Song Song\s -->
+
+    <!-- mute button and slider -->
+    <div id="carousel-volume-settings">
+        <label class="mute-button" id="mute-button" for="volume"><svg xmlns="http://www.w3.org/2000/svg" height="48"
+                width="48">
+                <path
+                    d="M28 41.45v-3.1q4.85-1.4 7.925-5.375T39 23.95q0-5.05-3.05-9.05-3.05-4-7.95-5.35v-3.1q6.2 1.4 10.1 6.275Q42 17.6 42 23.95t-3.9 11.225Q34.2 40.05 28 41.45ZM6 30V18h8L24 8v32L14 30Zm21 2.4V15.55q2.75.85 4.375 3.2T33 24q0 2.85-1.65 5.2T27 32.4Zm-6-16.8L15.35 21H9v6h6.35L21 32.45ZM16.3 24Z" />
+            </svg></label>
+        <input type="range" id="volume" name="volume" min="0" max="10" value="5">
+    </div>
+    <!-- ./mute button and slider -->
+
+    <!-- Audio Player-->
+    <audio id="carousel-audio-player" controls>
+        <source src="">
+    </audio>
+    <!-- Audio Player-->
+
+    <!-- Footer -->
+    <footer class="footer p-5">
+        <div class="container">
+            <div class="row justify-content-around">
+                <a href="https://github.com/CharlieMallon" target="_blank" rel="noopener"
+                    aria-label="Click to see Charlie's github"><i class="fa-brands fa-github"></i> Charlie</a>
+
+                <a href="https://github.com/DeanDodds" target="_blank" rel="noopener"
+                    aria-label="Click to see Dean's github"><i class="fa-brands fa-github"></i> Dean</a>
+
+                <a href="https://github.com/JusJae" target="_blank" rel="noopener"
+                    aria-label="Click to see Jae's github"><i class="fa-brands fa-github"></i> Jae</a>
+
+                <a href="https://github.com/HPCarey" target="_blank" rel="noopener"
+                    aria-label="Click to see Hannah's github"><i class="fa-brands fa-github"></i> Hannah</a>
+
+                <a href="https://github.com/petrugio" target="_blank" rel="noopener"
+                    aria-label="Click to see Petru's github"><i class="fa-brands fa-github"></i> Petru</a>
+
+                <a href="https://github.com/NaoiseGaffney" target="_blank" rel="noopener"
+                    aria-label="Click to see Naoise Gaffney's github"><i class="fa-brands fa-github"></i> Naoise
+                    Gaffney
+                    (mentor)</a>
+            </div>
+            <p class="text-center p-3">
+                This is a educational game developed as part of Code Institute's
+                November 2022 Hackathon
+            </p>
+        </div>
+    </footer>
+    <!-- ./Footer-->
+
+    <script src="assets/js/data.js"></script>
     <script src="assets/js/carousel.js"></script>
 </body>
+
 </html>
