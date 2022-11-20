@@ -2,7 +2,9 @@ const board = document.getElementById('board');
 const generator = document.getElementById('new-row-generator')
 const transparent = 'opacity(0%)'
 const red = 'invert(47%) sepia(74%) saturate(3260%) hue-rotate(340deg) brightness(102%) contrast(103%)'
-ACTIVE = null
+let ACTIVE = null
+let ACTIVEROW = ''
+let score = 0
 
 //event listener for touch screens
 const arrowButton = document.getElementsByClassName('arrow');
@@ -76,9 +78,10 @@ const animateRow = (row) => {
         }
         if (parseFloat(row.style.paddingTop).toFixed(2) > gameHeight-130){
             ACTIVE = row.getAttribute("data-active")
+            ACTIVEROW = row
             setTimeout(() => {
                 ACTIVE = null;
-            }, 500)
+            }, 1000)
         }
         if (parseFloat(row.style.paddingTop).toFixed(2) == gameHeight){
             arrowRow.remove()
@@ -98,13 +101,15 @@ const handleInput = (direction) => {
     const activeArrow = ACTIVE;
     const pressedKey = direction;
 
-    console.log(activeArrow, pressedKey)
-
     if (pressedKey === activeArrow) {
-        console.log("yay");
+        console.log('yay')
+        ACTIVEROW.remove();
+        score = score + 10
     } else {
-        console.log("miss");
+        console.log("miss")
     }
+
+    document.getElementById('score').innerHTML = score;
 }
 
 const startGame = () => {
