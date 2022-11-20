@@ -3,6 +3,7 @@ var cellCount = 6;
 var selectedIndex = 0;
 var songIndex = 0
 
+
 function rotateCarousel() {
   var angle = selectedIndex / cellCount * -360;
   carousel.style.transform = 'translateZ(-250px) rotateY(' + angle + 'deg)';
@@ -47,32 +48,43 @@ const populateCarousel = () => {
 
 // Play music displayed on carousel
 const playTile = () => {
-
-    const audio = document.getElementById('carousel-audio-player')
     const track = SONGS[songIndex];
-    
+    let audio = document.getElementById('carousel-audio-player')
     audio.setAttribute("src", track.link)
+    audio.volume = 0.2;
+    audio.currentTime=10;
+    audio.play();
+    setInterval(function(){
+      
+      if(audio.currentTime>25){
+        
+        audio.pause();
+      }
+    },1000);
   }
-
 
 // Increment song
 const increaseSongIndex = () => {
     songIndex++
-    if(songIndex === SONGS.length)
+    if(songIndex === SONGS.length){
     songIndex = 0
+    }
     console.log(songIndex)
 }
 
 // Decrease song index
 const decreaseSongIndex = () => {
-  if(songIndex === 0)
+  if(songIndex === 0){
     songIndex = SONGS.length
-
+  }
   songIndex--
   console.log(songIndex)
 }
 
-// 
+// Stop song 
+const stopSong = () => {
+  document.getElementById('carousel-audio-player').pause()
+}
 
 
 populateCarousel()
