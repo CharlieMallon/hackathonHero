@@ -21,7 +21,7 @@ nextButton.addEventListener( 'click', function() {
 
 
 //Loop through song objects and creates a card for each one
-const populateCarosel = () => {
+const populateCarousel = () => {
   
   for (let i = 0; i < SONGS.length; i++){
 
@@ -40,4 +40,4 @@ const populateCarosel = () => {
 }
 
 
-populateCarosel()
+populateCarousel()
