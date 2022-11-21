@@ -7,6 +7,8 @@ const blue = 'invert(77%) sepia(44%) saturate(4914%) hue-rotate(126deg) brightne
 const yellow = 'invert(94%) sepia(27%) saturate(5660%) hue-rotate(330deg) brightness(111%) contrast(90%)'
 const colour = [red, pink, blue, yellow]
 let score = 0
+let stopFalling = false
+
 
 // ---- Get the arrow that the user pressed
 //event listener for touch screens
@@ -28,42 +30,46 @@ window.addEventListener('keydown', (e) => {
 // ----- Create the Arrows
 //count Rows created
 let callCount = 0
+let duration = 5000; // higher the number the slower the arrow falls
+
 
 //create a random arrow
-const createRow = () => {
-    //create row of arrows
-    const newRow = board.cloneNode(true);
-    const randomise  = Math.floor(Math.random() * 4);
-    const randomColor = colour[Math.floor(Math.random() * colour.length)];
-    
-    //incrementRow
-    newRow.setAttribute('id', 'row'+callCount);
-    newRow.setAttribute('class', 'moving-row');
-    callCount+= 1;
+const createRow = (startTime, songLength) => {
+    if (!stopFalling){
+        //create row of arrows
+        const newRow = board.cloneNode(true);
+        const randomise  = Math.floor(Math.random() * 4);
+        const randomColor = colour[Math.floor(Math.random() * colour.length)];
+        
+        //incrementRow
+        newRow.setAttribute('id', 'row'+callCount);
+        newRow.setAttribute('class', 'moving-row');
+        callCount+= 1;
 
-    //sets a which arrow is active on the row
-    const DIRECTIONS = ["ArrowLeft", "ArrowUp", "ArrowDown", "ArrowRight"]
-    newRow.setAttribute("data-active", DIRECTIONS[randomise]);
+        //sets a which arrow is active on the row
+        const DIRECTIONS = ["ArrowLeft", "ArrowUp", "ArrowDown", "ArrowRight"]
+        newRow.setAttribute("data-active", DIRECTIONS[randomise]);
 
-    //sets its start time
-    //Each row needs to know its progress down the dom, so it can update its top px.  this means it needs to know when it was created.
-    newRow.setAttribute("data-starttime", new Date().getTime());
+        //sets its start time
+        //Each row needs to know its progress down the dom, so it can update its top px.  this means it needs to know when it was created.
+        newRow.setAttribute("data-starttime", new Date().getTime());
 
-    //colour random arrow red and rest transparent
-    for (let i = 0; i < 4; i++) {
-        if (i === randomise) {
-            newRow.children[i].style.setProperty("--arrow-color", randomColor);
-        } else {
-            newRow.children[i].style.setProperty("--arrow-color", transparent);
+        //colour random arrow red and rest transparent
+        for (let i = 0; i < 4; i++) {
+            if (i === randomise) {
+                newRow.children[i].style.setProperty("--arrow-color", randomColor);
+            } else {
+                newRow.children[i].style.setProperty("--arrow-color", transparent);
+            }
         }
+
+        //add arrow to top of screen
+        generator.append(newRow);
     }
 
-    //add arrow to top of screen
-    generator.append(newRow);
+    //stop arrow creation before end of song
+    timeElapsed(startTime, songLength, duration)
 }
-
-
-let duration = 5000; // higher the number the slower the arrow falls
 
 let gameHeight = document.getElementsByClassName('game-wrapper')[0].offsetHeight
 let buttonHeight = document.getElementById('board').offsetHeight
@@ -128,17 +134,32 @@ const handleInput = (direction) => {
 }
 
 const startGame = () => {
+    const startTime = new Date().getTime()
+    const songLength = 15000 // 30sec
+
 
     createRow();
     // set the interval of when to add the arrows
     setInterval(() => {
-        createRow();
-    }, 1000)
+            createRow(startTime, songLength);
+        }, 1000)
     
     //animate all rows
     let allRows = document.getElementsByClassName('moving-Row')
     
     animateRows(allRows)
+}
+
+const gameStop = () => {
+    console.log('stopped')
+}
+
+//end the level after song length
+const timeElapsed = (startTime, songLength, duration) => {
+    if (new Date().getTime() - startTime > (songLength-duration)) {
+        stopFalling = true
+        console.log(stopFalling)
+    }
 }
 
 startGame();
