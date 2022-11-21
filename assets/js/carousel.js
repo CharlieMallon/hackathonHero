@@ -32,8 +32,11 @@ const populateCarousel = () => {
   
   for (let i = 0; i < SONGS.length; i++){
 
-    const element = document.createElement("div")
-
+    const element = document.createElement("a")
+    // add data attribute
+    element.dataset.num = i
+    // add href for a attributte
+    element.href = `game.html?songIndex=${i}`
     // add background image
     element.classList.add('card', `song-${i}`)
     element.style.backgroundImage = `url(${SONGS[i].image})` 
@@ -79,23 +82,24 @@ const decreaseSongIndex = () => {
 }
 
 
-// volume 
+// volume varibles
 let slider = document.getElementById('volume')
-var volumeSettings = slider.value / 100
+
+var volumeSettings = slider.value / 10
 let muteButton = document.getElementById('mute-button')
+const audio = document.getElementById('carousel-audio-player')
+audio.volume = volumeSettings
 
 // Volume Slider
 slider.oninput = function () {
   let audio = document.getElementById('carousel-audio-player')
-  volumeSettings = this.value / 100;
+  volumeSettings = this.value / 10;
 
   audio.volume = volumeSettings 
   console.log(volumeSettings)
   changeMuteBtn()
   console.log(volumeSettings)
   }
-
-// Mute Button
 
 
 // Mute Volume 

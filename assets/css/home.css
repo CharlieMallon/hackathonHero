@@ -4,9 +4,14 @@ body {
   background-color: #cfc7bd;
 }
 
+.jumbotron{
+  background-color: #1b0909;
+  opacity: 80%;
+}
+
 .hero {
   height: 80vh;
-  background: url("../images/home/pexels-4.jpg") center no-repeat fixed;
+  background-image: url("https://media.istockphoto.com/id/1257537691/vector/illustration-of-a-dance-floor-amongst-starry-open-space-vector.jpg?s=612x612&w=0&k=20&c=uEisbRI0BCO5F3Z8QrgMF_EvHpdrfTXotVv2qsBrUHs=");
   -webkit-background-size: cover;
   -moz-background-size: cover;
   -o-background-size: cover;
@@ -20,11 +25,11 @@ body {
 }
 
 footer {
-  background-color: #cfc7bd;
+  background-color: black;
 }
 
 .row a {
-  color: #1b0909;
+  color: #fafafa;
 }
 
 .row a:hover {

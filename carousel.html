@@ -4,9 +4,18 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- Bootstrap -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css"
+        integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <!-- Font Awesome -->
+    <script src="https://kit.fontawesome.com/add0cc32e5.js" crossorigin="anonymous"></script>
     <!-- My style Sheet -->
     <link rel="stylesheet" href="assets/css/carousel.css">
-    <title>Dance Dance</title>
+    <link rel="stylesheet" href="assets/css/style.css">
+
+    <title>Rhythm Heroes</title>
+    <link rel="icon" type="image/x-icon" href="assets/images/record.ico">
+
 </head>
 
 <body>
@@ -14,8 +23,8 @@
         each song has a difficulty which is determined
         by the BPM of the song.  Carousel shows the
         single cover of the song, artist and difficulty. -->
-    <div class="header">
-        <h1>DANCE DANCE</h1>
+    <div class="container text-center">
+        <h1 class="logo">Rhythm Heroes</h1>
     </div>
 
     <div class="header">
@@ -24,12 +33,12 @@
 
     <!-- Carousel to pick Song Song\s -->
     <div id="carousel-outer-container">
-        <div class="container">
+        <div class="carousel-container">
             <div class="carousel">
             </div>
         </div>
-        <button class="next">Next</button>
-        <button class="prev">Prev</button>
+        <button class="next btn">Next</button>
+        <button class="prev btn">Prev</button>
     </div>
     <!-- ./Carousel to pick Song Song\s -->
 
@@ -40,7 +49,7 @@
                 <path
                     d="M28 41.45v-3.1q4.85-1.4 7.925-5.375T39 23.95q0-5.05-3.05-9.05-3.05-4-7.95-5.35v-3.1q6.2 1.4 10.1 6.275Q42 17.6 42 23.95t-3.9 11.225Q34.2 40.05 28 41.45ZM6 30V18h8L24 8v32L14 30Zm21 2.4V15.55q2.75.85 4.375 3.2T33 24q0 2.85-1.65 5.2T27 32.4Zm-6-16.8L15.35 21H9v6h6.35L21 32.45ZM16.3 24Z" />
             </svg></label>
-        <input type="range" id="volume" name="volume" min="0" max="10" value="5">
+        <input type="range" id="volume" name="volume" min="0" max="10" value="2">
     </div>
     <!-- ./mute button and slider -->
 
@@ -70,8 +79,7 @@
                     aria-label="Click to see Petru's github"><i class="fa-brands fa-github"></i> Petru</a>
 
                 <a href="https://github.com/NaoiseGaffney" target="_blank" rel="noopener"
-                    aria-label="Click to see Naoise Gaffney's github"><i class="fa-brands fa-github"></i> Naoise
-                    Gaffney
+                    aria-label="Click to see Naoise Gaffney's github"><i class="fa-brands fa-github"></i> Naoise Gaffney
                     (mentor)</a>
             </div>
             <p class="text-center p-3">

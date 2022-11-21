@@ -14,7 +14,7 @@ body {
   height: 80%;
 }
 
-.container {
+.carousel-container {
   margin: 0 auto;
   display: flex;
   width: 100%;
@@ -41,7 +41,6 @@ body {
   background: #111;
   width: 250px;
   height: 250px;
-  line-height: 250px;
   font-size: 5em;
   text-align: center;
   color: white;
@@ -85,15 +84,9 @@ body {
   color: #444;
   position: absolute;
   bottom: 134px;
-  padding: 1em 2em;
   cursor: pointer;
-  background: #ccc;
-  border-radius: 5px;
-  border-top: 1px solid #fff;
-  box-shadow: 0 5px 0 #999;
-
-  transition: box-shadow 0.1s, top 0.1s;
 }
+
 .next {
   right: 5em;
 }
@@ -160,3 +153,4 @@ body {
   /*bottom: 100px;*/
  }
 }
+
