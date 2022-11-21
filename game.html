@@ -26,7 +26,8 @@
 
     <!-- Game Name -->
     <div class="container text-center">
-        <h1 class="logo">Rhythm Heroes</h1>
+        <a href="index.html"><h1 class="logo">Rhythm Heroes</h1></a>
+        
     </div>
     <!-- Game name-->
 
@@ -44,7 +45,14 @@
         <div class="score">
             <p>Score: <span id="score"></span></p>
             <p>High Score: cookie?</p>
-            <p class="volume">volume slider</p>
+            <div id="carousel-volume-settings">
+                <label class="mute-button" id="mute-button" for="volume"><svg xmlns="http://www.w3.org/2000/svg"
+                        height="48" width="48">
+                        <path
+                            d="M28 41.45v-3.1q4.85-1.4 7.925-5.375T39 23.95q0-5.05-3.05-9.05-3.05-4-7.95-5.35v-3.1q6.2 1.4 10.1 6.275Q42 17.6 42 23.95t-3.9 11.225Q34.2 40.05 28 41.45ZM6 30V18h8L24 8v32L14 30Zm21 2.4V15.55q2.75.85 4.375 3.2T33 24q0 2.85-1.65 5.2T27 32.4Zm-6-16.8L15.35 21H9v6h6.35L21 32.45ZM16.3 24Z" />
+                    </svg></label>
+                <input type="range" id="volume" name="volume" min="0" max="10" value="2">
+            </div>
         </div>
 
     </div>
@@ -85,7 +93,7 @@
     <!-- ./GameBoard -->
 
     <!-- Audio Player -->
-    <audio id="game-audio" controls>
+    <audio id="game-audio">
         <source src="">
     </audio>
     <!-- ./Audio Player -->

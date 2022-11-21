@@ -1,7 +1,6 @@
 /* styling css */
 
 .score-wrapper{
-    height: 20%;
     width: 80%;
     border-radius: 10px;
     color: #fafafa;
@@ -32,6 +31,7 @@
     justify-content: space-evenly;
     display: flex;
     flex-direction: row;
+    align-items: flex-end;
 }
 
 #end-game-container{
@@ -127,3 +127,9 @@
 .hidden{
     display: none;
 }
+
+@media (max-width: 780px) {
+    .score-wrapper{
+        width: 100%;
+    }
+  }
