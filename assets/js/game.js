@@ -8,6 +8,7 @@ const yellow = 'invert(94%) sepia(27%) saturate(5660%) hue-rotate(330deg) bright
 const colour = [red, pink, blue, yellow]
 let score = 0
 let stopFalling = false
+let songEnd = false
 
 
 // ---- Get the arrow that the user pressed
@@ -75,38 +76,39 @@ let gameHeight = document.getElementsByClassName('game-wrapper')[0].offsetHeight
 let buttonHeight = document.getElementById('board').offsetHeight
 
 const animateRows = (allRows) => {
-
-    // code inspired by from http://www.javascriptkit.com/javatutors/requestanimationframe.shtml
-    function moveit(timestamp, allRows, dist, duration){
-        //if browser doesn't support requestAnimationFrame, generate our own timestamp using Date:
-        timestamp = new Date().getTime()
-        for (row of allRows) {
-            let starttime = Number(row.dataset.starttime)
-            let runtime = timestamp - starttime // how long since we last did this
-            // duration = how long it should take
-            //progress = how far down the dom it should be.
-            let progress = runtime / duration 
-            progress = Math.min(progress, 1) // keeps animation smooth
-            row.style.top = (dist * progress).toFixed(2) + 'px' // move the row down the page
-            //if in hit zone give click attribute
-            if (parseFloat(row.style.top).toFixed(2) > gameHeight-(buttonHeight+5)) {
-                row.setAttribute('data-click', true)
-            } 
-            //Remove the row if off game page
-            if (parseFloat(row.style.top).toFixed(2) == gameHeight){
-                row.remove()
+    if (!songEnd){
+        // code inspired by from http://www.javascriptkit.com/javatutors/requestanimationframe.shtml
+        function moveit(timestamp, allRows, dist, duration){
+            //if browser doesn't support requestAnimationFrame, generate our own timestamp using Date:
+            timestamp = new Date().getTime()
+            for (row of allRows) {
+                let starttime = Number(row.dataset.starttime)
+                let runtime = timestamp - starttime // how long since we last did this
+                // duration = how long it should take
+                //progress = how far down the dom it should be.
+                let progress = runtime / duration 
+                progress = Math.min(progress, 1) // keeps animation smooth
+                row.style.top = (dist * progress).toFixed(2) + 'px' // move the row down the page
+                //if in hit zone give click attribute
+                if (parseFloat(row.style.top).toFixed(2) > gameHeight-(buttonHeight+5)) {
+                    row.setAttribute('data-click', true)
+                } 
+                //Remove the row if off game page
+                if (parseFloat(row.style.top).toFixed(2) == gameHeight){
+                    row.remove()
+                }
+            };
+            if (allRows){ // if song is running continue.
+                requestAnimationFrame(function(timestamp){ // call requestAnimationFrame again
+                    moveit(timestamp, allRows, dist, duration)
+                })
             }
-        };
-        if (allRows){ // if song is running continue.
-            requestAnimationFrame(function(timestamp){ // call requestAnimationFrame again
-                moveit(timestamp, allRows, dist, duration)
-            })
         }
-    }
 
-    window.requestAnimationFrame(function(timestamp){
-        moveit(timestamp, allRows, gameHeight, duration)
-    })
+        window.requestAnimationFrame(function(timestamp){
+            moveit(timestamp, allRows, gameHeight, duration)
+        })
+    }
 }
 
 
@@ -135,7 +137,7 @@ const handleInput = (direction) => {
 
 const startGame = () => {
     const startTime = new Date().getTime()
-    const songLength = 15000 // 30sec
+    const songLength = 30000 // 30sec
 
 
     createRow();
@@ -150,15 +152,20 @@ const startGame = () => {
     animateRows(allRows)
 }
 
-const gameStop = () => {
-    console.log('stopped')
+const gameEnd = () => {
+    console.log('pop up goes here')
 }
 
 //end the level after song length
 const timeElapsed = (startTime, songLength, duration) => {
-    if (new Date().getTime() - startTime > (songLength-duration)) {
-        stopFalling = true
-        console.log(stopFalling)
+    if (!songEnd){
+        if (new Date().getTime() - startTime > (songLength-duration)) {
+            stopFalling = true
+        }
+        if (new Date().getTime() - startTime > songLength) {
+            songEnd = true
+            gameEnd()
+        }
     }
 }
 
