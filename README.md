@@ -1,7 +1,7 @@
 # **Rhythm Heroes** : *Hackathon Nov 2022*
 ## *GAME TAG LINE*
 
-![image]()
+![Responsive](assets/images/am-i-responsive.png)
 
 ## Project Overview
 Welcome to Rhythm Heroes!
@@ -33,7 +33,8 @@ Good luck!
 1. As a gamer I am presented with the landing page which gives me a general overview of
    how to play the game. 
 
-**Acceptance criteria**: Gamer was able to landing page with instructions.
+**Aceptance criteria**: Gamer was able to landing page with instructions.
+![Landing page](assets/images/landing-page.png)
  
 2. As a gamer, I want to be presented with the start game button
    so that I can press the start game button to play the game. 
@@ -42,7 +43,9 @@ Good luck!
 
 3. As a gamer, I want to be able to choose from a selection of song options and difficulty levels.
 
-**Acceptance criteria**:  Gamer was able to choose from a selection of songs.
+   **Acceptance criteria**:  Gamer was able to choose from a selection of songs.
+
+![Carousel](assets/images/carousel.png)
 
 4. As gamer, I want to be able to hear a snippet of the song audio before I make a song selection.
 
@@ -51,12 +54,16 @@ Good luck!
 
 5. As a gamer, I want to see the gameboard, moving arrows and the arrow targets at the bottom of the screen.
 
-  **Acceptance criteria** : Gamer was able to see all the elements of the gameboard.
+   **Acceptance criteria** : Gamer was able to see all the elements of the gameboard, including the score, the track details and volume controls.
 
-6. As a gamer, I want to press the button to replay my favourite sound patterns .
- so that i can test my memory level.
+![Game page](assets/images/game-board.png)
 
- **Acceptance criteria** :  Gamer was able to play favourite sound patterns from memory.
+6. As a gamer, I want the option to play again at the end of the game
+
+  **Acceptance criteria** :  Gamer was shown a play again button which, when pressed, directed them back to the carousel to select a new song and play again.
+
+  ![End of game](assets/images/end-of-game.png)
+
 
 ## Wireframes:
 
@@ -114,6 +121,7 @@ To our Facilitator- Naoise Gaffney, thank you for your support and checkpoints.
 
 * [CSS filter generator to convert from black to target hex color](https://codepen.io/sosuke/pen/Pjoqqp)
 * [Youtube - Dance Dance Revolution Playlist ](https://www.example.com)
+* [CSS Neon button effect](https://www.lenastanley.com/2022/01/css-neon-button-neon-effect.html?m=1) for the button styles.
 
 
 ## Contributors
