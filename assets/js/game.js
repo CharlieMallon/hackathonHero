@@ -154,7 +154,7 @@ const startGame = () => {
 
 const gameEnd = () => {
     document.getElementById('score-end').innerHTML = score;
-    document.getElementById('end-game').classList.remove('hidden')
+    document.getElementById('end-game-container').classList.remove('hidden')
     if (score = 80){
     document.getElementById('winner').classList.remove('hidden')
     }

@@ -34,7 +34,7 @@
     flex-direction: row;
 }
 
-.end-game-container{
+#end-game-container{
     width: 80%;
     border-radius: 10px;
     border: 4px dashed #fafafa;
