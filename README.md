@@ -1,5 +1,4 @@
 # **Rhythm Heroes** : *Hackathon Nov 2022*
-## *GAME TAG LINE*
 
 ![Responsive](assets/images/am-i-responsive.png)
 
@@ -19,7 +18,7 @@ Good luck!
 
 ### Deployed link
 
-[Click here to play!](charliemallon.github.io/hackathonHero/)
+[Click here to play!](https://charliemallon.github.io/hackathonHero/)
 
 ### How to install
 
