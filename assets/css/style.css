@@ -1,6 +1,8 @@
 @import url('https://fonts.googleapis.com/css2?family=Bungee+Shade&family=Bungee+Spice&family=Roboto:wght@300;400;700&display=swap');
 
-
+body{
+    background-color: black;
+}
 /* font-family: 'Bungee Shade', cursive;
 font-family: 'Bungee Spice', cursive;
 font-family: 'Roboto', sans-serif; */
@@ -17,9 +19,32 @@ h4,
 h5 {
 
     font-family: 'Bungee Shade', cursive;;
+    color: #fafafa;
 }
 
 p {
     font-family: 'Roboto', sans-serif;
+    color: #fafafa;
 }
 
+/* buttons */
+
+.btn {
+    color: #db3eb1;
+    border: 6px solid #db3eb1;
+    border-radius:15px;
+    padding: 10px 20px;
+    font-size: 20px;
+    font-family: 'Roboto', sans-serif;
+    cursor: pointer;
+    font-weight: bold;
+    filter: drop-shadow(0 0 15px #db3eb1) drop-shadow(0 0 50px #db3eb1) contrast(2) brightness(2);
+    transition: .5s;
+  }
+  
+  .button:hover {
+    color: black;
+    background-color: #db3eb1;
+    filter: drop-shadow(0 0 20px #db3eb1) contrast(2) brightness(2);
+  }
+  

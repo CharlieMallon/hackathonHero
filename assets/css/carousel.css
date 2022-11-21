@@ -84,15 +84,9 @@ body {
   color: #444;
   position: absolute;
   bottom: 134px;
-  padding: 1em 2em;
   cursor: pointer;
-  background: #ccc;
-  border-radius: 5px;
-  border-top: 1px solid #fff;
-  box-shadow: 0 5px 0 #999;
-
-  transition: box-shadow 0.1s, top 0.1s;
 }
+
 .next {
   right: 5em;
 }

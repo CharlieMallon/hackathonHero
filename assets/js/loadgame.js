@@ -18,7 +18,7 @@ const loadSonginfo = (songIndex) => {
   
   audio.setAttribute("src", track.link)
   artistElement.innerHTML = track.artist
-  songElement.innerHTML = track.song
+  songElement.innerHTML = track.name
   levelElement.innerHTML = track.level
 }
 
