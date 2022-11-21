@@ -113,10 +113,13 @@ const handleInput = (direction) => {
         const pressedKey = direction; // direction pressed/clicked
     
         if (pressedKey === activeArrow) {
-            console.log('hit')
+            document.getElementById('miss').classList.add('hidden')
+            document.getElementById('hit').classList.remove('hidden')
             activeRow.remove()
             score = score + 10
         } else {
+            document.getElementById('hit').classList.add('hidden')
+            document.getElementById('miss').classList.remove('hidden')
             console.log("miss")
         }
     }
