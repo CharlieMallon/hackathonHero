@@ -1,0 +1,25 @@
+@import url('https://fonts.googleapis.com/css2?family=Bungee+Shade&family=Bungee+Spice&family=Roboto:wght@300;400;700&display=swap');
+
+
+/* font-family: 'Bungee Shade', cursive;
+font-family: 'Bungee Spice', cursive;
+font-family: 'Roboto', sans-serif; */
+
+/* Fonts */
+
+.logo {
+    font-family: 'Bungee Spice', cursive ;
+}
+
+h2,
+h3,
+h4,
+h5 {
+
+    font-family: 'Bungee Shade', cursive;;
+}
+
+p {
+    font-family: 'Roboto', sans-serif;
+}
+
