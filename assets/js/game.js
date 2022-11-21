@@ -83,7 +83,7 @@ const animateRows = (allRows) => {
             progress = Math.min(progress, 1) // keeps animation smooth
             row.style.top = (dist * progress).toFixed(2) + 'px' // move the row down the page
             //if in hit zone give click attribute
-            if (parseFloat(row.style.top).toFixed(2) > gameHeight-buttonHeight) {
+            if (parseFloat(row.style.top).toFixed(2) > gameHeight-(buttonHeight+5)) {
                 row.setAttribute('data-click', true)
             } 
             //Remove the row if off game page
@@ -108,11 +108,13 @@ const handleInput = (direction) => {
 
     const activeRows = document.querySelectorAll('[data-click=true]');
     if (activeRows.length){
-        const activeArrow = activeRows[0].dataset.active
+        const activeRow = activeRows[0]
+        const activeArrow = activeRow.dataset.active
         const pressedKey = direction; // direction pressed/clicked
     
         if (pressedKey === activeArrow) {
             console.log('hit')
+            activeRow.remove()
             score = score + 10
         } else {
             console.log("miss")
