@@ -94,12 +94,6 @@ Responsiveness for different screen sizes can be seen in the features section ab
    
  * The project lead reviewed and approved the pull request and merged to the project repository.
 
- 
-## Acknowledgements
-
-To all the Rhythm Hero game developers, your time and contributions are highly valued. Thank you.
-To our Facilitator- Naoise Gaffney, thank you for your support and checkpoints.
-
 
 ## Technologies used
 
@@ -115,10 +109,16 @@ To our Facilitator- Naoise Gaffney, thank you for your support and checkpoints.
 - [Game name generator](https://anytexteditor.com/game-name-generator).
 * [Downie 4](https://software.charliemonroe.net/downie/) to download YouTube videos for playlist.
 * [Permute](https://software.charliemonroe.net/permute/) to convert downloaded YouTube videos, from mp4 to mp3.
+* [amiresponse](https://ui.dev/amiresponsive?url=https://charliemallon.github.io/hackathonHero/game.html?songIndex=1)
+
 
 
 ## Credits
+Project idea took inspiration from the following sources:
+* [How to Make a DANCE DANCE REVOLUTION](https://www.youtube.com/watch?v=fJFZZ6MlgLE) 
 
+
+* [Animation](http://www.javascriptkit.com/javatutors/requestanimationframe.shtml)
 * [CSS filter generator to convert from black to target hex color](https://codepen.io/sosuke/pen/Pjoqqp)
 * [Youtube - Dance Dance Revolution Playlist ](https://www.example.com)
 * [CSS Neon button effect](https://www.lenastanley.com/2022/01/css-neon-button-neon-effect.html?m=1) for the button styles.
@@ -131,3 +131,8 @@ To our Facilitator- Naoise Gaffney, thank you for your support and checkpoints.
 * [Hannah Carey](https://github.com/HPCarey)
 * [Jae Phillips](https://www.example.com)
 * [Petru Chelban](https://github.com/petrugio)
+
+## Acknowledgements
+
+To all the Rhythm Hero game developers, your time and contributions are highly valued. Thank you.
+To our Facilitator- Naoise Gaffney, thank you for your support and checkpoints.
