@@ -25,19 +25,18 @@ const loadSonginfo = (songIndex) => {
 loadSonginfo(songIndex)
 PlayAudio(songIndex)
 
-// volume varibles
+// volume varibles 
 let slider = document.getElementById('volume')
-var volumeSettings = slider.value 
-console.log(volumeSettings)
+var volumeSettings = slider.value / 10
 let muteButton = document.getElementById('mute-button')
+const audio = document.getElementById('game-audio')
+audio.volume = volumeSettings
 
 // Volume Slider
 slider.oninput = function () {
   const audio = document.getElementById('game-audio')
   volumeSettings = this.value / 10;
   audio.volume = volumeSettings 
-  console.log(volumeSettings + '1')
-  console.log(volumeSettings)
   changeMuteBtn()
   }
 

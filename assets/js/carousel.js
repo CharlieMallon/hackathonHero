@@ -84,8 +84,11 @@ const decreaseSongIndex = () => {
 
 // volume varibles
 let slider = document.getElementById('volume')
+
 var volumeSettings = slider.value / 10
 let muteButton = document.getElementById('mute-button')
+const audio = document.getElementById('carousel-audio-player')
+audio.volume = volumeSettings
 
 // Volume Slider
 slider.oninput = function () {
