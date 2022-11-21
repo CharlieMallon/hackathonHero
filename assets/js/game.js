@@ -137,7 +137,7 @@ const handleInput = (direction) => {
 
 const startGame = () => {
     const startTime = new Date().getTime()
-    const songLength = 30000 // 30sec
+    const songLength = 60000 // TODO this needs to be whatever the audio length is - get from Component
 
 
     createRow();
@@ -153,7 +153,11 @@ const startGame = () => {
 }
 
 const gameEnd = () => {
-    console.log('pop up goes here')
+    document.getElementById('score-end').innerHTML = score;
+    document.getElementById('end-game-container').classList.remove('hidden')
+    if (score = 80){
+    document.getElementById('winner').classList.remove('hidden')
+    }
 }
 
 //end the level after song length
