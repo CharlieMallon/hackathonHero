@@ -48,3 +48,23 @@ p {
     filter: drop-shadow(0 0 20px #db3eb1) contrast(2) brightness(2);
   }
   
+  /* mute button  color*/
+  .mute-button {
+    filter: invert(100%) sepia(4%) saturate(361%) hue-rotate(252deg) brightness(116%) contrast(96%);
+  }
+
+  /* volume selector color */
+  input[type=range] {
+    -webkit-appearance: none;
+    background-color: #fafafa;
+    height: 10px;
+}
+
+/* volume selector color */
+input[type="range"]::-webkit-slider-thumb {
+     -webkit-appearance: none;
+    background-color: #db3eb1;
+    width: 10px;
+    height: 26px;
+
+}
