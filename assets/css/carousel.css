@@ -14,7 +14,7 @@ body {
   height: 80%;
 }
 
-.container {
+.carousel-container {
   margin: 0 auto;
   display: flex;
   width: 100%;
@@ -159,3 +159,4 @@ body {
   /*bottom: 100px;*/
  }
 }
+
