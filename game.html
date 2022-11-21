@@ -1,12 +1,14 @@
 <html lang="en">
-    <head>
-        <meta charset="UTF-8">
-        <meta http-equiv="X-UA-Compatible" content="IE=edge">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <!-- My style Sheet -->
-        <link rel="stylesheet" href="assets/css/game.css">
-        <title>Dance Dance</title>
-    </head>
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- My style Sheet -->
+    <link rel="stylesheet" href="assets/css/game.css">
+    <title>Dance Dance</title>
+</head>
+
 <body>
     <!-- The game board, a score and the song/artist/difficulty.
     game board contains - static arrows on the bottom, game play
@@ -17,8 +19,8 @@
     <div class="score-wrapper">
         <div class="current-song">
             <h3>Current Song</h3>
-            <p>artist / song</p>
-            <p>difficulty</p>
+            <p><span id="artist"></span> / <span id="song"></span></p>
+            <p>difficulty <span id="level"></span></p>
         </div>
         <div class="score">
             <p>Score: </p>
@@ -46,6 +48,15 @@
             </div>
         </div>
     </div>
+
+    <!-- Audio Player -->
+    <audio id="game-audio" controls>
+        <source src="">
+    </audio>
+    <!-- ./Audio Player -->
+    <script src="assets/js/data.js"></script>
     <script src="assets/js/game.js"></script>
+    <script src="assets/js/loadgame.js"></script>
 </body>
+
 </html>

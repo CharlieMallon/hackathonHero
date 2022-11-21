@@ -32,8 +32,11 @@ const populateCarousel = () => {
   
   for (let i = 0; i < SONGS.length; i++){
 
-    const element = document.createElement("div")
-
+    const element = document.createElement("a")
+    // add data attribute
+    element.dataset.num = i
+    // add href for a attributte
+    element.href = `game.html?songIndex=${i}`
     // add background image
     element.classList.add('card', `song-${i}`)
     element.style.backgroundImage = `url(${SONGS[i].image})` 
