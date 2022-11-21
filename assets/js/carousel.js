@@ -82,7 +82,7 @@ const decreaseSongIndex = () => {
 }
 
 
-// volume 
+// volume varibles
 let slider = document.getElementById('volume')
 var volumeSettings = slider.value / 100
 let muteButton = document.getElementById('mute-button')
@@ -97,8 +97,6 @@ slider.oninput = function () {
   changeMuteBtn()
   console.log(volumeSettings)
   }
-
-// Mute Button
 
 
 // Mute Volume 

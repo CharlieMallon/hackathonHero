@@ -15,7 +15,14 @@
     arrow animate from the top. When the arrow key is pressed and 
     its the correct arrow and the arrow is in the tap zone then
     they get a point. After 7 missed they lose game or lose points? -->
-    <h2 class="game-title">Rhythm Dance Game</h2>
+
+    <!-- Game Name -->
+    <div class="header">
+        <h2 class="game-title">Rhythm Heros</h2>
+    </div>
+    <!-- Game name-->
+
+    <!-- ScoreBoard -->
     <div class="score-wrapper">
         <div class="current-song">
             <h3>Current Song</h3>
@@ -27,8 +34,17 @@
             <p id="score"></p>
             <p>High Score: cookie?</p>
         </div>
-        <div class="volume">volume slider</div>
+        <div id="carousel-volume-settings">
+            <label id="mute-button" for="volume"><svg xmlns="http://www.w3.org/2000/svg" height="48" width="48">
+                    <path
+                        d="M28 41.45v-3.1q4.85-1.4 7.925-5.375T39 23.95q0-5.05-3.05-9.05-3.05-4-7.95-5.35v-3.1q6.2 1.4 10.1 6.275Q42 17.6 42 23.95t-3.9 11.225Q34.2 40.05 28 41.45ZM6 30V18h8L24 8v32L14 30Zm21 2.4V15.55q2.75.85 4.375 3.2T33 24q0 2.85-1.65 5.2T27 32.4Zm-6-16.8L15.35 21H9v6h6.35L21 32.45ZM16.3 24Z" />
+                </svg></label>
+            <input type="range" id="volume" name="volume" min="0" max="10" value="5">
+        </div>
     </div>
+    <!-- ./ScoreBoard -->
+
+    <!-- GameBoard -->
     <div class="game-wrapper">
         <div class="new-row-generator" id="new-row-generator">
             <!-- Rows with active arrow appear here -->
@@ -48,12 +64,14 @@
             </div>
         </div>
     </div>
+    <!-- ./GameBoard -->
 
     <!-- Audio Player -->
     <audio id="game-audio" controls>
         <source src="">
     </audio>
     <!-- ./Audio Player -->
+
     <script src="assets/js/data.js"></script>
     <script src="assets/js/game.js"></script>
     <script src="assets/js/loadgame.js"></script>
