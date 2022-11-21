@@ -84,13 +84,13 @@ const decreaseSongIndex = () => {
 
 // volume varibles
 let slider = document.getElementById('volume')
-var volumeSettings = slider.value / 100
+var volumeSettings = slider.value / 10
 let muteButton = document.getElementById('mute-button')
 
 // Volume Slider
 slider.oninput = function () {
   let audio = document.getElementById('carousel-audio-player')
-  volumeSettings = this.value / 100;
+  volumeSettings = this.value / 10;
 
   audio.volume = volumeSettings 
   console.log(volumeSettings)
